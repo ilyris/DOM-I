@@ -1,6 +1,7 @@
 const siteContent = {
   "nav": {
-    "nav-item-1": "Services",
+    "nav-item-11": "ContentOne",
+    "nav-item-2": "ContentTwo",
     "nav-item-2": "Product",
     "nav-item-3": "Vision",
     "nav-item-4": "Features",
@@ -47,7 +48,15 @@ logo.setAttribute('src', siteContent["nav"]["img-src"]);
 const testMapObject = Object.keys(siteContent.nav);
 const navValues = Object.values(siteContent.nav);
 
+// create links to append
+const aLink = document.createElement("a");
+const aLink2 = document.createElement("a");
+
 let navAnchors = document.querySelectorAll("nav a");
+
+
+document.querySelector("nav").prepend(aLink);
+document.querySelector("nav").prepend(aLink2);
 
 // Loop through our elements.
 navAnchors.forEach( (link, i) => {
@@ -55,6 +64,7 @@ navAnchors.forEach( (link, i) => {
   link.classList.add(testMapObject[i]);
   link.innerText = navValues[i];
 });
+
 
 const ctaH1 = document.querySelector(".cta .cta-text h1");
 ctaH1.innerText = siteContent.cta.h1;
@@ -101,3 +111,6 @@ document.querySelector("footer p").innerText = siteContent['footer']['copyright'
 //   element.innerText = mainContentH4s[i];
 //   topContentP.innerText = mainContentH4s[i];
 // })
+
+
+
