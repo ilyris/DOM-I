@@ -48,8 +48,10 @@ const testMapObject = Object.keys(siteContent.nav);
 const navValues = Object.values(siteContent.nav);
 
 let navAnchors = document.querySelectorAll("nav a");
+
 // Loop through our elements.
 navAnchors.forEach( (link, i) => {
+  link.style.color = "green";
   link.classList.add(testMapObject[i]);
   link.innerText = navValues[i];
 });
@@ -83,6 +85,17 @@ topContentP[3].textContent = siteContent['main-content']['product-content'];
 topContentP[4].textContent = siteContent['main-content']['vision-content'];
 topContentImg.src = siteContent["main-content"]['middle-img-src'];
 
+// Contact Section
+const contactInfromationTitle = document.querySelector(".contact h4");
+contactInfromationTitle.innerText = siteContent["contact"]['contact-h4'];
+
+const contactContentValues = Object.values(siteContent["contact"]);
+const newContactContentValues = contactContentValues.shift();
+
+document.querySelectorAll(".contact p").forEach( (paragraphElements,i) => paragraphElements.innerText = contactContentValues[i]);
+
+
+document.querySelector("footer p").innerText = siteContent['footer']['copyright'];
 // topContentH4.forEach( (element, i) => {
 //   console.log(i);
 //   element.innerText = mainContentH4s[i];
