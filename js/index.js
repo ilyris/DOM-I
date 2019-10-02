@@ -39,4 +39,52 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+
+
+// Store object values into an array for easy looping
+const testMapObject = Object.keys(siteContent.nav);
+const navValues = Object.values(siteContent.nav);
+
+let navAnchors = document.querySelectorAll("nav a");
+// Loop through our elements.
+navAnchors.forEach( (link, i) => {
+  link.classList.add(testMapObject[i]);
+  link.innerText = navValues[i];
+});
+
+const ctaH1 = document.querySelector(".cta .cta-text h1");
+ctaH1.innerText = siteContent.cta.h1;
+
+const ctaButton = document.querySelector('.cta .cta-text button');
+ctaButton.innerText = siteContent.cta.button;
+
+const ctaImg = document.getElementById('cta-img');
+ctaImg.src = siteContent['cta']["img-src"];
+
+const mainContentH4s = Object.values(siteContent['main-content']);
+console.log(mainContentH4s);
+
+const topContentH4 = document.querySelectorAll('.text-content h4');
+const topContentP = document.querySelectorAll('.text-content p');
+const topContentImg = document.getElementById('middle-img');
+
+topContentH4[0].textContent = siteContent['main-content']['features-h4'];
+topContentH4[1].textContent = siteContent['main-content']['about-h4'];
+topContentH4[2].textContent = siteContent['main-content']['services-h4'];
+topContentH4[3].textContent = siteContent['main-content']['product-h4'];
+topContentH4[4].textContent = siteContent['main-content']['vision-h4'];
+
+topContentP[0].textContent = siteContent['main-content']['features-content'];
+topContentP[1].textContent = siteContent['main-content']['about-content'];
+topContentP[2].textContent = siteContent['main-content']['services-content'];
+topContentP[3].textContent = siteContent['main-content']['product-content'];
+topContentP[4].textContent = siteContent['main-content']['vision-content'];
+topContentImg.src = siteContent["main-content"]['middle-img-src'];
+
+// topContentH4.forEach( (element, i) => {
+//   console.log(i);
+//   element.innerText = mainContentH4s[i];
+//   topContentP.innerText = mainContentH4s[i];
+// })
