@@ -51,14 +51,11 @@ const navValues = Object.values(siteContent.nav);
 // create links to append
 const aLink = document.createElement("a");
 const aLink2 = document.createElement("a");
-
 let navAnchors = document.querySelectorAll("nav a");
-
-
 document.querySelector("nav").prepend(aLink);
 document.querySelector("nav").prepend(aLink2);
 
-// Loop through our elements.
+// Loop through our nav elements.
 navAnchors.forEach( (link, i) => {
   link.style.color = "green";
   link.classList.add(testMapObject[i]);
@@ -71,6 +68,7 @@ ctaH1.innerText = siteContent.cta.h1;
 
 const ctaButton = document.querySelector('.cta .cta-text button');
 ctaButton.innerText = siteContent.cta.button;
+ctaButton.addEventListener( "click", event => ctaH1.textContent = "Let's get started boys! Lets do the digital Timer Stretch!");
 
 const ctaImg = document.getElementById('cta-img');
 ctaImg.src = siteContent['cta']["img-src"];
@@ -82,6 +80,8 @@ const topContentH4 = document.querySelectorAll('.text-content h4');
 const topContentP = document.querySelectorAll('.text-content p');
 const topContentImg = document.getElementById('middle-img');
 
+
+// Probably need to make this into a loop cause this code bugs the shit out of me.
 topContentH4[0].textContent = siteContent['main-content']['features-h4'];
 topContentH4[1].textContent = siteContent['main-content']['about-h4'];
 topContentH4[2].textContent = siteContent['main-content']['services-h4'];
