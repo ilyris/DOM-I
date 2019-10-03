@@ -1,7 +1,7 @@
 const siteContent = {
   "nav": {
     "nav-item-11": "ContentOne",
-    "nav-item-2": "ContentTwo",
+    "nav-item-1": "ContentTwo",
     "nav-item-2": "Product",
     "nav-item-3": "Vision",
     "nav-item-4": "Features",
@@ -44,20 +44,21 @@ logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 
 // Store object values into an array for easy looping
-const testMapObject = Object.keys(siteContent.nav);
+const navKeys = Object.keys(siteContent.nav);
 const navValues = Object.values(siteContent.nav);
 
 // create links to append
 const aLink = document.createElement("a");
-const aLink2 = document.createElement("a");
-let navAnchors = document.querySelectorAll("nav a");
 document.querySelector("nav").prepend(aLink);
-document.querySelector("nav").prepend(aLink2);
+document.querySelector("nav").prepend(aLink);
+let navAnchors = document.querySelectorAll("nav a");
+
+
 
 // Loop through our nav elements.
 navAnchors.forEach( (link, i) => {
   link.style.color = "green";
-  link.classList.add(testMapObject[i]);
+  link.classList.add(navKeys[i]);
   link.innerText = navValues[i];
 });
 
