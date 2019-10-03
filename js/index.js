@@ -43,7 +43,6 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 
-
 // Store object values into an array for easy looping
 const testMapObject = Object.keys(siteContent.nav);
 const navValues = Object.values(siteContent.nav);
@@ -73,26 +72,40 @@ ctaButton.addEventListener( "click", event => ctaH1.textContent = "Let's get sta
 const ctaImg = document.getElementById('cta-img');
 ctaImg.src = siteContent['cta']["img-src"];
 
-const mainContentH4s = Object.values(siteContent['main-content']);
-console.log(mainContentH4s);
+const mainContentArrayValues = Object.values(siteContent['main-content']);
 
 const topContentH4 = document.querySelectorAll('.text-content h4');
 const topContentP = document.querySelectorAll('.text-content p');
 const topContentImg = document.getElementById('middle-img');
 
+let mainContentTitleArray = [];
+let mainContentTitleArray2 = [];
 
-// Probably need to make this into a loop cause this code bugs the shit out of me.
-topContentH4[0].textContent = siteContent['main-content']['features-h4'];
-topContentH4[1].textContent = siteContent['main-content']['about-h4'];
-topContentH4[2].textContent = siteContent['main-content']['services-h4'];
-topContentH4[3].textContent = siteContent['main-content']['product-h4'];
-topContentH4[4].textContent = siteContent['main-content']['vision-h4'];
+mainContentArrayValues.forEach( (elements, i) =>{
+  if(mainContentArrayValues[i].length <= 8) {
+    return mainContentTitleArray.push(elements);
+  }
+});
 
-topContentP[0].textContent = siteContent['main-content']['features-content'];
-topContentP[1].textContent = siteContent['main-content']['about-content'];
-topContentP[2].textContent = siteContent['main-content']['services-content'];
-topContentP[3].textContent = siteContent['main-content']['product-content'];
-topContentP[4].textContent = siteContent['main-content']['vision-content'];
+topContentH4.forEach( (H4,i) => {
+  return H4.innerText = mainContentTitleArray[i];
+});
+
+// Push the paragraph elements into the empty array
+mainContentArrayValues.forEach( (elements, i) =>{
+  if(mainContentArrayValues[i].length > 8) {
+    return mainContentTitleArray2.push(elements);
+  }
+});
+
+// Remove the img source
+mainContentTitleArray2.splice(2,1);
+
+// Loop through the paragraph tags and add in the new array elements
+topContentP.forEach( (paragraphElements,i) => {
+  return paragraphElements.innerText = mainContentTitleArray2[i];
+});
+
 topContentImg.src = siteContent["main-content"]['middle-img-src'];
 
 // Contact Section
@@ -106,11 +119,7 @@ document.querySelectorAll(".contact p").forEach( (paragraphElements,i) => paragr
 
 
 document.querySelector("footer p").innerText = siteContent['footer']['copyright'];
-// topContentH4.forEach( (element, i) => {
-//   console.log(i);
-//   element.innerText = mainContentH4s[i];
-//   topContentP.innerText = mainContentH4s[i];
-// })
+
 
 
 
