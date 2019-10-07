@@ -1,12 +1,13 @@
 const siteContent = {
   "nav": {
-    "nav-item-11": "ContentOne",
-    "nav-item-1": "ContentTwo",
+    "nav-item-0": "Hello",
+    "nav-item-1": "Services",
     "nav-item-2": "Product",
     "nav-item-3": "Vision",
     "nav-item-4": "Features",
     "nav-item-5": "About",
     "nav-item-6": "Contact",
+    "nav-item-99": "Welcome",
     "img-src": "img/logo.png"
   },
   "cta": {
@@ -48,18 +49,28 @@ const navKeys = Object.keys(siteContent.nav);
 const navValues = Object.values(siteContent.nav);
 
 // create links to append
-const aLink = document.createElement("a");
-document.querySelector("nav").prepend(aLink);
-document.querySelector("nav").prepend(aLink);
+// const aLink = document.createElement("a");
+
+// document.querySelector("nav").prepend(aLink);
+// document.querySelector("nav").append(aLink);
+
+// let textnodeOne = document.createTextNode("LinkOne");
+
+let aLinkOne = document.createElement("a");
+let aLinkTwo = document.createElement("a");
+
+let nav = document.querySelector("nav");
+
+nav.appendChild(aLinkOne);
+nav.prepend(aLinkTwo);
+ 
 let navAnchors = document.querySelectorAll("nav a");
-
-
 
 // Loop through our nav elements.
 navAnchors.forEach( (link, i) => {
   link.style.color = "green";
   link.classList.add(navKeys[i]);
-  link.innerText = navValues[i];
+  link.textContent = navValues[i];
 });
 
 
@@ -80,11 +91,13 @@ const topContentP = document.querySelectorAll('.text-content p');
 const topContentImg = document.getElementById('middle-img');
 
 let mainContentTitleArray = [];
-let mainContentTitleArray2 = [];
+let mainContentParagraphArray = [];
 
 mainContentArrayValues.forEach( (elements, i) =>{
   if(mainContentArrayValues[i].length <= 8) {
     return mainContentTitleArray.push(elements);
+  } else if(mainContentArrayValues[i].length > 8) {
+    return mainContentParagraphArray.push(elements);
   }
 });
 
@@ -92,19 +105,11 @@ topContentH4.forEach( (H4,i) => {
   return H4.innerText = mainContentTitleArray[i];
 });
 
-// Push the paragraph elements into the empty array
-mainContentArrayValues.forEach( (elements, i) =>{
-  if(mainContentArrayValues[i].length > 8) {
-    return mainContentTitleArray2.push(elements);
-  }
-});
-
 // Remove the img source
-mainContentTitleArray2.splice(2,1);
-
+mainContentParagraphArray.splice(2,1);
 // Loop through the paragraph tags and add in the new array elements
 topContentP.forEach( (paragraphElements,i) => {
-  return paragraphElements.innerText = mainContentTitleArray2[i];
+  return paragraphElements.innerText = mainContentParagraphArray[i];
 });
 
 topContentImg.src = siteContent["main-content"]['middle-img-src'];
@@ -117,8 +122,6 @@ const contactContentValues = Object.values(siteContent["contact"]);
 const newContactContentValues = contactContentValues.shift();
 
 document.querySelectorAll(".contact p").forEach( (paragraphElements,i) => paragraphElements.innerText = contactContentValues[i]);
-
-
 document.querySelector("footer p").innerText = siteContent['footer']['copyright'];
 
 
